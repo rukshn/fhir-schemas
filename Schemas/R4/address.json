@@ -1,0 +1,51 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema",
+  "$id": "stack://over.flow/address.json",
+  "$comment": "An address expressed using postal conventions (as opposed to GPS or other location definition formats).",
+  "title": "address",
+  "type": "object",
+  "properties": {
+    "code": {
+      "type": "string",
+      "enum": ["home", "work", "temp", "old", "billing"],
+      "$comment": "home | work | temp | old | billing"
+    },
+    "type": {
+      "type": "string",
+      "enum": ["postal", "physical", "both"],
+      "$comment": "postal | physical | both"
+    },
+    "text": {
+      "type": "string",
+      "$comment": "Text representation of the address"
+    },
+    "line": {
+      "type": "array",
+      "$comment": "Street name, number, direction & P.O. Box etc."
+    },
+    "city": {
+      "type": "string",
+      "$comment": "Name of city, town etc."
+    },
+    "district": {
+      "type": "string",
+      "$comment": "District name (aka county)"
+    },
+    "state": {
+      "type": "string",
+      "$comment": "Sub-unit of country (abbreviations ok)"
+    },
+    "postalCode": {
+      "type": "string",
+      "$comment": "Postal code for area"
+    },
+    "country": {
+      "type": "string",
+      "$comment": "Country (e.g. can be ISO 3166 2 or 3 letter code)"
+    },
+    "period": {
+      "$ref": "period.json#",
+      "$comment": "Time period when address was/is in use"
+    }
+  }
+}

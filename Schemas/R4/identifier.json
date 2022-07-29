@@ -1,0 +1,29 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema",
+  "$id": "stack://over.flow/identifier.json",
+  "title": "identifier",
+  "$comment": "A numeric or alphanumeric string that is associated with a single object or entity within a given system. Typically, identifiers are used to connect content in resources to external content available in other frameworks or protocols. Identifiers are associated with objects and may be changed or retired due to human or system process and errors.",
+  "type": "object",
+  "properties": {
+    "use": {
+      "type": "string",
+      "$comment": "usual | official | temp | secondary | old (If known)"
+    },
+    "type": {
+      "$ref": "codeableConcept.json#",
+      "$comment": "Description of identifier"
+    },
+    "system": {
+      "type": "string",
+      "$comment": "The namespace for the identifier value"
+    },
+    "value": {
+      "type": "string",
+      "$comment": "The value that is unique"
+    },
+    "period": {
+      "$ref": "period.json#",
+      "$comment": "Time period when id is/was valid for use"
+    }
+  }
+}

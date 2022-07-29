@@ -1,0 +1,40 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema",
+  "$id": "stack://over.flow/contactPoint.json",
+  "title": "contactPoint",
+  "$comment": "Details for all kinds of technology-mediated contact points for a person or organization, including telephone, email, etc.",
+  "properties": {
+    "use": {
+      "type": "string",
+      "enum": ["home", "work", "temp", "old", "mobile"],
+      "$comment": "Purpose of the contact"
+    },
+    "rank": {
+      "type": "number",
+      "minimum": 1,
+      "$comment": "Specify preferred order of use (1 = highest)"
+    },
+    "period": {
+      "$ref": "period.json#",
+      "$comment": "Time period when the contact point was/is in use"
+    }
+  },
+  "if": {
+    "properties": {
+      "value": {
+        "type": "string",
+        "$comment": "The actual contact point details"
+      }
+    }
+  },
+  "then": {
+    "properties": {
+      "system": {
+        "type": "string",
+        "enum": ["phone", "fax", "email", "pager", "url", "sms", "other"],
+        "$comment": "phone | fax | email | pager | url | sms | other"
+      }
+    },
+    "required": ["system"]
+  }
+}
