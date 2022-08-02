@@ -3,6 +3,7 @@
   "$id": "stack://over.flow/contactPoint.json",
   "title": "contactPoint",
   "$comment": "Details for all kinds of technology-mediated contact points for a person or organization, including telephone, email, etc.",
+  "type": "object",
   "properties": {
     "use": {
       "type": "string",
