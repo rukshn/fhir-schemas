@@ -1,0 +1,45 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema",
+  "$id": "stack://over.flow/attachment.json",
+  "$comment": "This type is for containing or referencing attachments - additional data content defined in other formats.",
+  "title": "attachment",
+  "type": "object",
+  "properties": {
+    "contentType": {
+      "type": "string",
+      "$comment": "Mime type of the content, with charset etc."
+    },
+    "language": {
+      "type": "string",
+      "$comment": "Human language of the content (BCP-47)"
+    },
+    "data": {
+      "type": "string",
+      "pattern": "(s*([0-9a-zA-Z+=]){4}s*)+",
+      "$comment": "Data inline, base64ed"
+    },
+    "url": {
+      "type": "string",
+      "$comment": "Uri where the data can be found"
+    },
+    "size": {
+      "type": "number",
+      "minimum": 0,
+      "$comment": "Number of bytes of content (if url provided)"
+    },
+    "hash": {
+      "type": "string",
+      "pattern": "(s*([0-9a-zA-Z+=]){4}s*)+",
+      "$comment": "Hash of the data (sha-1, base64ed)"
+    },
+    "title": {
+      "type": "string",
+      "$comment": "Label to display in place of the data"
+    },
+    "creation": {
+      "type": "string",
+      "pattern": "([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1])(T([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\\.[0-9]+)?(Z|(\\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00)))?)?)?",
+      "$comment": "Date attachment was first created"
+    }
+  }
+}
