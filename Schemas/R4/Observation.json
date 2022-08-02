@@ -1,0 +1,282 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema",
+  "$id": "stack://over.flow/Observation.json",
+  "$comment": "Measurements and simple assertions made about a patient, device or other subject.",
+  "title": "Observation",
+  "type": "object",
+  "properties": {
+    "identifier": {
+      "type": "array",
+      "items": {
+        "$ref": "identifier.json#"
+      },
+      "$comment": "Business Identifier for observation"
+    },
+    "basedOn": {
+      "type": "array",
+      "items": {
+        "$ref": "reference.json#"
+      },
+      "$comment": "Fulfills plan, proposal or order"
+    },
+    "partOf": {
+      "type": "array",
+      "items": {
+        "$ref": "reference.json#"
+      },
+      "$comment": "Part of referenced event"
+    },
+    "status": {
+      "type": "string",
+      "enum": ["registered", "preliminary", "final", "amended"],
+      "$comment": "registered | preliminary | final | amended"
+    },
+    "category": {
+      "type": "array",
+      "items": {
+        "$ref": "codeableConcept.json#"
+      },
+      "$comment": "Classification of type of observation"
+    },
+    "code": {
+      "$ref": "codeableConcept.json#",
+      "$comment": "Type of observation (code / type)"
+    },
+    "subject": {
+      "$ref": "reference.json#",
+      "$comment": "Who and/or what the observation is about"
+    },
+    "focus": {
+      "type": "array",
+      "items": {
+        "$ref": "reference.json#"
+      },
+      "$comment": "What the observation is about, when it is not about the subject of record."
+    },
+    "encounter": {
+      "$ref": "reference.json#",
+      "$comment": "Healthcare event during which this observation is made"
+    },
+    "effectiveDateTime": {
+      "$ref": "dateTime.json#",
+      "$comment": "Clinically relevant time/time-period for observation"
+    },
+    "effectivePeriod": {
+      "$ref": "period.json#",
+      "$comment": "Clinically relevant time/time-period for observation"
+    },
+    "effectiveTiming": {
+      "$ref": "timing.json#",
+      "$comment": "Clinically relevant time/time-period for observation"
+    },
+    "effectiveInstant": {
+      "$ref": "instant.json#",
+      "$comment": "Clinically relevant time/time-period for observation"
+    },
+    "issued": {
+      "$ref": "instant.json#",
+      "$comment": "Date/Time this version was made available"
+    },
+    "performer": {
+      "$ref": "reference.json#",
+      "$comment": "Who is responsible for the observation"
+    },
+    "valueQuantity": {
+      "$ref": "quantitiy.json#",
+      "$comment": "Actual result"
+    },
+    "valueCodeableConcept": {
+      "$ref": "codeableConcept.json#",
+      "$comment": "Actual result"
+    },
+    "valueString": {
+      "type": "string",
+      "$comment": "Actual result"
+    },
+    "valueBoolean": {
+      "type": "boolean",
+      "$comment": "Actual result"
+    },
+    "valueInteger": {
+      "type": "integer",
+      "$comment": "Actual result"
+    },
+    "valueRange": {
+      "$ref": "range.json#",
+      "$comment": "Actual result"
+    },
+    "valueRatio": {
+      "$ref": "ratio.json#",
+      "$comment": "Actual result"
+    },
+    "valueSampledData": {
+      "$ref": "sampledData.json#",
+      "$comment": "Actual result"
+    },
+    "valueTime": {
+      "$ref": "time.json#",
+      "$comment": "Actual result"
+    },
+    "valueDateTime": {
+      "$ref": "dateTime.json#",
+      "$comment": "Actual result"
+    },
+    "valuePeriod": {
+      "$ref": "period.json#",
+      "$comment": "Actual result"
+    },
+    "dataAbsentReason": {
+      "$ref": "codeableConcept.json#",
+      "$comment": "Why the result is missing"
+    },
+    "interpretation": {
+      "type": "array",
+      "items": {
+        "$ref": "codeableConcept.json#"
+      },
+      "$comment": "High, low, normal, etc"
+    },
+    "note": {
+      "type": "array",
+      "items": {
+        "$ref": "annotation.json#"
+      },
+      "$comment": "Comments about the observation"
+    },
+    "bodySite": {
+      "$ref": "codeableConcept.json#",
+      "$comment": "Observed body part"
+    },
+    "method": {
+      "$ref": "codeableConcept.json#",
+      "$comment": "How it was done"
+    },
+    "specimen": {
+      "$ref": "reference.json#",
+      "$comment": "Specimen used for this observation"
+    },
+    "device": {
+      "$ref": "reference.json#",
+      "$comment": "(Measurement) Device"
+    },
+    "referenceRange": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "high": {
+            "$ref": "quantitiy.json#",
+            "$comment": "Low Range, if relevant"
+          },
+          "low": {
+            "$ref": "quantitiy.json#",
+            "$comment": "High Range, if relevant"
+          },
+          "type": {
+            "$ref": "codeableConcept.json#",
+            "$comment": "Reference range qualifier"
+          },
+          "appliesTo": {
+            "type": "array",
+            "items": {
+              "$ref": "codeableConcept.json#"
+            },
+            "$comment": "Reference range population"
+          },
+          "age": {
+            "$ref": "range.json#",
+            "$comment": "Applicable age range, if relevant"
+          },
+          "text": {
+            "type": "string",
+            "$comment": "Text based reference range in an observation"
+          }
+        }
+      }
+    },
+    "hasMember": {
+      "$ref": "reference.json#",
+      "$comment": "Related resource that belongs to the Observation group"
+    },
+    "derievedFrom": {
+      "$ref": "reference.json#",
+      "$comment": "Related measurements the observation is made from"
+    },
+    "component": {
+      "type": "array",
+      "$comment": "Component results",
+      "items": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "string",
+            "$comment": "Type of component observation (code / type)"
+          },
+          "valueQuantity": {
+            "$ref": "quantitiy.json#",
+            "$comment": "Actual component result"
+          },
+          "valueCodeableConcept": {
+            "$ref": "codeableConcept.json#",
+            "$comment": "Actual component result"
+          },
+          "valueString": {
+            "type": "string",
+            "$comment": "Actual component result"
+          },
+          "valueBoolean": {
+            "type": "boolean",
+            "$comment": "Actual component result"
+          },
+          "valueInteger": {
+            "type": "integer",
+            "$comment": "Actual component result"
+          },
+          "valueRange": {
+            "$ref": "range.json#",
+            "$comment": "Actual component result"
+          },
+          "valueRatio": {
+            "$ref": "ratio.json#",
+            "$comment": "Actual component result"
+          },
+          "valueSampledData": {
+            "$ref": "sampledData.json#",
+            "$comment": "Actual component result"
+          },
+          "valueTime": {
+            "$ref": "time.json#",
+            "$comment": "Actual component result"
+          },
+          "valueDateTime": {
+            "$ref": "dateTime.json#",
+            "$comment": "Actual component result"
+          },
+          "valuePeriod": {
+            "$ref": "period.json#",
+            "$comment": "Actual component result"
+          },
+          "dataAbsentReason": {
+            "$ref": "codeableConcept.json#",
+            "$comment": "Why the component result is missing"
+          },
+          "interpretation": {
+            "type": "array",
+            "items": {
+              "$ref": "codeableConcept.json#",
+              "$comment": "High, low, normal, etc."
+            }
+          },
+          "referenceRange": {
+            "type": "array",
+            "items": {
+              "$ref": "#/referenceRange"
+            }
+          }
+        },
+        "required": ["code"]
+      }
+    }
+  },
+  "required": ["status", "code"]
+}
