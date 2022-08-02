@@ -1,6 +1,6 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema",
-  "$id": "stack://over.flow/Patient.json",
+  "$id": "stack://over.flow/humanName.json",
   "$comment": "A name of a human with text, parts and usage information.",
   "title": "humanName",
   "type": "object",
