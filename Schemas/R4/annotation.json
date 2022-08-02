@@ -1,0 +1,25 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema",
+  "$id": "stack://over.flow/annotation.json#",
+  "$comment": "A text note which also contains information about who made the statement and when.",
+  "title": "Annotation",
+  "type": "object",
+  "properties": {
+    "authorReference": {
+      "$ref": "reference.json#",
+      "$comment": "Individual responsible for the annotation"
+    },
+    "authorString": {
+      "type": "string",
+      "$comment": "Individual responsible for the annotation"
+    },
+    "time": {
+      "$ref": "dateTime.json#",
+      "$comment": "When the annotation was made"
+    },
+    "text": {
+      "type": "string",
+      "$comment": "The annotation - text content (as markdown)"
+    }
+  }
+}
