@@ -1,0 +1,89 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema",
+  "$id": "stack://over.flow/Organization.json",
+  "$comment": "A formally or informally recognized grouping of people or organizations formed for the purpose of achieving some form of collective action. Includes companies, institutions, corporations, departments, community groups, healthcare practice groups, payer/insurer, etc.",
+  "title": "Organization",
+  "type": "object",
+  "properties": {
+    "resourceType": {
+      "type": "string",
+      "enum": ["Organization"]
+    },
+    "identifier": {
+      "type": "array",
+      "items": {
+        "$ref": "identifier.json#"
+      },
+      "$comment": "Identifies this organization across multiple systems"
+    },
+    "active": {
+      "type": "boolean",
+      "$comment": "Whether the organization's record is still in active use"
+    },
+    "type": {
+      "type": "array",
+      "items": {
+        "$ref": "codeableConcept.json#"
+      },
+      "$comment": "Kind of organization"
+    },
+    "name": {
+      "type": "string",
+      "$comment": "Name used for the organization"
+    },
+    "alias": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "$comment": "A list of alternate names that the organization is known as, or was known as in the past"
+    },
+    "telecom": {
+      "type": "array",
+      "items": {
+        "$ref": "contactPoint.json#"
+      },
+      "$comment": "A contact detail for the organization"
+    },
+    "address": {
+      "type": "array",
+      "items": {
+        "$ref": "address.json#"
+      },
+      "$comment": "An address for the organization"
+    },
+    "partOf": {
+      "$ref": "Organization.json#",
+      "$comment": "The organization of which this organization forms a part"
+    },
+    "contact": {
+      "type": "array",
+      "$comment": "Contact for the organization for a certain purpose",
+      "items": {
+        "type": "object",
+        "properties": {
+          "purpose": {
+            "$ref": "codeableConcept.json#",
+            "$comment": "The type of contact"
+          },
+          "name": {
+            "type": "string",
+            "$comment": "A name associated with the contact"
+          },
+          "telecom": {
+            "type": "array",
+            "items": {
+              "$ref": "contactPoint.json#"
+            },
+            "$comment": "Contact details (telephone, email, etc.) for a contact"
+          },
+          "address": {
+            "$ref": "address.json#",
+            "$comment": "Visiting or postal addresses for the contact"
+          }
+        }
+      }
+    }
+  },
+  "required": ["resourceType"]
+}
