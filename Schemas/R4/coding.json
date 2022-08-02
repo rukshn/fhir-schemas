@@ -3,18 +3,27 @@
   "$id": "stack://over.flow/coding.json",
   "title": "coding",
   "description": "A Coding is a representation of a defined concept using a symbol from a defined 'code system'",
+  "type": "object",
   "properties": {
     "system": {
-      "type": "string"
+      "type": "string",
+      "$comment": "Identity of the terminology system"
     },
     "version": {
-      "type": "string"
+      "type": "string",
+      "$comment": "Version of the system - if relevant"
     },
     "code": {
-      "type": "string"
+      "type": "string",
+      "$comment": "Symbol in syntax defined by the system"
+    },
+    "display": {
+      "type": "string",
+      "$comment": "Representation defined by the system"
     },
     "userSelected": {
-      "type": "boolean"
+      "type": "boolean",
+      "$comment": "If this coding was chosen directly by the user"
     }
   }
 }
