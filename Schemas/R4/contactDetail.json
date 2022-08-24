@@ -1,0 +1,20 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema",
+  "$id": "stack://over.flow/contactDetail.json",
+  "$comment": "The ContactDetail structure defines general contact details.",
+  "title": "contactDetail",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string",
+      "$comment": "Name of an individual to contact"
+    },
+    "telecom": {
+      "type": "array",
+      "items": {
+        "$ref": "contactPoint.json#"
+      },
+      "$comment": "Contact details for individual or organization"
+    }
+  }
+}
