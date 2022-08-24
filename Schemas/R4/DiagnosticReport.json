@@ -1,0 +1,145 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema",
+  "$id": "stack://over.flow/DiagnosticReport.json",
+  "$comment": "The findings and interpretation of diagnostic tests performed on patients, groups of patients, devices, and locations, and/or specimens derived from these",
+  "title": "DiagnosticReport",
+  "type": "object",
+  "properties": {
+    "resourceType": {
+      "type": "string",
+      "enum": ["DiagnosticReport"]
+    },
+    "identifier": {
+      "type": "array",
+      "items": {
+        "$ref": "identifier.json#"
+      },
+      "$comment": "Business identifier for report"
+    },
+    "basedOn": {
+      "type": "array",
+      "items": {
+        "$ref": "reference.json#"
+      },
+      "$comment": "What was requested"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "registered",
+        "partial",
+        "preliminary",
+        "final",
+        "amended",
+        "corrected",
+        "appended",
+        "cancelled",
+        "entered-in-error",
+        "unknown"
+      ],
+      "$comment": "registered | partial | preliminary | final +"
+    },
+    "category": {
+      "type": "array",
+      "items": {
+        "$ref": "codeableConcept.json#"
+      },
+      "$comment": "Service category"
+    },
+    "code": {
+      "$ref": "codeableConcept.json#",
+      "$comment": "Name/Code for this diagnostic report"
+    },
+    "subject": {
+      "$ref": "reference.json#",
+      "$comment": "The subject of the report - usually, but not always, the patient"
+    },
+    "encounter": {
+      "$ref": "reference.json#",
+      "$comment": "Health care event when test ordered"
+    },
+    "effectiveDateTime": {
+      "$ref": "dateTime.json#",
+      "$comment": "Clinically relevant time/time-period for report"
+    },
+    "effectivePeriod": {
+      "$ref": "period.json#",
+      "$comment": "Clinically relevant time/time-period for report"
+    },
+    "issued": {
+      "$ref": "instant.json#",
+      "$comment": "DateTime this version was made"
+    },
+    "performer": {
+      "type": "array",
+      "items": {
+        "$ref": "reference.json#"
+      },
+      "$comment": "Responsible Diagnostic Service"
+    },
+    "resultsInterpreter": {
+      "type": "array",
+      "items": {
+        "$ref": "reference.json#"
+      },
+      "$comment": "Primary result interpreter"
+    },
+    "specimen": {
+      "type": "array",
+      "items": {
+        "$ref": "reference.json#"
+      },
+      "$comment": "Specimens this report is based on"
+    },
+    "result": {
+      "type": "array",
+      "items": {
+        "$ref": "reference.json#"
+      },
+      "$comment": "Observations"
+    },
+    "imagingStudy": {
+      "type": "array",
+      "items": {
+        "$ref": "reference.json#"
+      },
+      "$comment": "Reference to full details of imaging associated with the diagnostic report"
+    },
+    "media": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "comment": {
+            "type": "string",
+            "$comment": "Comment about the image (e.g. explanation)"
+          },
+          "link": {
+            "$ref": "reference.json#",
+            "$comment": "Reference to the image source"
+          }
+        },
+        "required": ["link"]
+      },
+      "$comment": "Key images associated with this report"
+    },
+    "conclusion": {
+      "type": "string",
+      "$comment": "Clinical conclusion (interpretation) of test results"
+    },
+    "conclusionCode": {
+      "type": "array",
+      "items": {
+        "$ref": "codeableConcept.json#"
+      },
+      "$comment": "Codes for the clinical conclusion of test results"
+    },
+    "presentedForm": {
+      "type": "array",
+      "items": {
+        "$ref": "attachment.json#"
+      },
+      "$comment": "Entire report as issued"
+    }
+  }
+}
