@@ -1,0 +1,156 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema",
+  "$id": "stack://over.flow/CodeSystem.json",
+  "$comment": "",
+  "title": "CodeSystem",
+  "type": "object",
+  "properties": {
+    "resourceType": {
+      "type": "string",
+      "enum": ["CodeSystem"]
+    },
+    "url": {
+      "type": "string"
+    },
+    "identifier": {
+      "type": "array",
+      "items": {
+        "$ref": "identifier.json#"
+      }
+    },
+    "version": {
+      "type": "string"
+    },
+    "name": {
+      "type": "string"
+    },
+    "status": {
+      "type": "string"
+    },
+    "experimental": {
+      "type": "boolean"
+    },
+    "date": {
+      "$ref": "dateTime.json#"
+    },
+    "publisher": {
+      "type": "string"
+    },
+    "contat": {
+      "type": "array",
+      "items": {
+        "$ref": "contactDetail.json#"
+      }
+    },
+    "description": {
+      "type": "string"
+    },
+    "jurisdiction": {
+      "type": "array",
+      "items": {
+        "$ref": "codeableConcept.json#"
+      }
+    },
+    "purpose": {
+      "type": "string"
+    },
+    "copyright": {
+      "type": "string"
+    },
+    "caseSensitive": {
+      "type": "boolean"
+    },
+    "valueSet": {
+      "$ref": "string"
+    },
+    "hierarchyMeaning": {
+      "type": "string",
+      "enum": ["grouped-by", "is-a", "part-of", "classified-with"]
+    },
+    "compositional": {
+      "type": "boolean"
+    },
+    "versionNeeded": {
+      "type": "boolean"
+    },
+    "content": {
+      "type": "string",
+      "enum": ["not-present", "example", "fragment", "complete", "supplement"]
+    },
+    "suppliments": {
+      "type": "string"
+    },
+    "count": {
+      "type": "number"
+    },
+    "filter": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
+          "operator": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "enum": [
+                "=",
+                "is-a",
+                "descendent-of",
+                "is-not-a",
+                "regex",
+                "in",
+                "not-in",
+                "generalizes",
+                "exists"
+              ]
+            },
+            "minLength": 1
+          },
+          "value": {
+            "type": "string"
+          }
+        },
+        "required": ["code", "operator", "value"]
+      }
+    },
+    "property": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "string"
+          },
+          "uri": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
+          "type": {
+            "type": "string",
+            "enum": [
+              "code",
+              "Coding",
+              "string",
+              "integer",
+              "boolean",
+              "dateTime",
+              "decimal"
+            ]
+          }
+        },
+        "required": ["code", "type"]
+      }
+    },
+    "concept": {
+      "type": "array"
+    }
+  }
+}
