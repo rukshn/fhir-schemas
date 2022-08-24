@@ -1,0 +1,37 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema",
+  "$id": "stack://over.flow/Signature.json",
+  "$comment": "A Signature holds an electronic representation of a signature and its supporting context in a FHIR accessible form. The signature may either be a cryptographic type (XML DigSig or a JWS), which is able to provide non-repudiation proof, or it may be a graphical image that represents a signature or a signature process.",
+  "title": "Signature",
+  "type": "object",
+  "properties": {
+    "type": {
+      "$ref": "coding.json#",
+      "$comment": "Indication of the reason the entity signed the object(s)"
+    },
+    "when": {
+      "$ref": "reference.json#",
+      "$comment": "When the signature was created"
+    },
+    "who": {
+      "$ref": "reference.json#",
+      "$comment": "Who signed"
+    },
+    "onBehalfOf": {
+      "$ref": "reference.json#",
+      "$comment": "The party represented"
+    },
+    "targetFormat": {
+      "type": "string",
+      "$comment": "The technical format of the signed resources"
+    },
+    "sigFormat": {
+      "type": "string",
+      "$comment": "The technical format of the signature"
+    },
+    "data": {
+      "$ref": "base64Binary.json#",
+      "$comment": "The actual signature content (XML DigSig. JWS, picture, etc.)"
+    }
+  }
+}
