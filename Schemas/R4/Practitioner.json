@@ -1,0 +1,87 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema",
+  "$id": "stack://over.flow/Practitioner.json",
+  "$comment": "A person who is directly or indirectly involved in the provisioning of healthcare.",
+  "title": "Practitioner",
+  "type": "object",
+  "properties": {
+    "identifier": {
+      "type": "array",
+      "items": {
+        "$ref": "identifier.json#"
+      },
+      "$comment": "An identifier for the person as this agent"
+    },
+    "active": {
+      "type": "boolean",
+      "$comment": "Whether this practitioner's record is in active use"
+    },
+    "name": {
+      "type": "array",
+      "items": {
+        "$ref": "humanName.json#"
+      },
+      "$comment": "The name(s) associated with the practitioner"
+    },
+    "telecom": {
+      "type": "array",
+      "items": {
+        "$ref": "contactPoint.json#"
+      },
+      "$comment": "A contact detail for the practitioner (that apply to all roles)"
+    },
+    "address": {
+      "type": "array",
+      "items": {
+        "$ref": "address.json#"
+      },
+      "$comment": "Address(es) of the practitioner that are not role specific (typically home address)"
+    },
+    "gender": {
+      "type": "string",
+      "enum": ["male", "female", "other", "unknown"],
+      "$comment": "male | female | other | unknown"
+    },
+    "birthDate": {
+      "type": "string",
+      "pattern": "([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)(-(0[1-9]|1[0-2])(-(0[1-9]|[1-2][0-9]|3[0-1]))?)?",
+      "$comment": "The date on which the practitioner was born"
+    },
+    "photo": {
+      "type": "array",
+      "items": {
+        "$ref": "attachment.json#"
+      },
+      "$comment": "Image of the person"
+    },
+    "qualification": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "identifier": {
+            "type": "array",
+            "$ref": "identifier.json#",
+            "$comment": "An identifier for this qualification for the practitioner"
+          },
+          "code": {
+            "$ref": "codeableConcept.json#",
+            "minimum": 1,
+            "$comment": "Coded representation of the qualification"
+          },
+          "period": {
+            "$ref": "period.json#",
+            "$comment": "Period during which the qualification is valid"
+          }
+        }
+      }
+    },
+    "communication": {
+      "type": "array",
+      "items": {
+        "$ref": "codeableConcept.json#"
+      },
+      "$comment": "A language the practitioner can use in patient communication"
+    }
+  }
+}
