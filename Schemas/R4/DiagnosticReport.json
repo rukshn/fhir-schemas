@@ -141,5 +141,6 @@
       },
       "$comment": "Entire report as issued"
     }
-  }
+  },
+  "required": ["status", "code"]
 }
