@@ -1,0 +1,25 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema",
+  "$id": "stack://over.flow/Resource.json",
+  "$comment": "Base resource definitions where all resources are based on",
+  "title": "Resource",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "$comment": "Logical id of this artifact"
+    },
+    "meta": {
+      "$ref": "meta.json#",
+      "$comment": "Metadata about the resource"
+    },
+    "implicitRules": {
+      "type": "string",
+      "$comment": "A set of rules under which this content was created"
+    },
+    "language": {
+      "type": "string",
+      "$comment": "Language of the resource content"
+    }
+  }
+}
