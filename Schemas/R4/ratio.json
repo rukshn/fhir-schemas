@@ -1,0 +1,15 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema",
+  "$id": "stack://over.flow/ratio.json",
+  "$comment": "A relationship between two Quantity values expressed as a numerator and a denominator.",
+  "title": "ratio",
+  "type": "object",
+  "properties": {
+    "numerator": {
+      "$ref": "quantity.json#"
+    },
+    "denominator": {
+      "$ref": "quantitiy.json#"
+    }
+  }
+}
