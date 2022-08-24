@@ -1,0 +1,15 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema",
+  "$id": "stack://over.flow/range.json",
+  "$comment": "A set of ordered Quantity values defined by a low and high limit.",
+  "title": "Range",
+  "type": "object",
+  "properties": {
+    "low": {
+      "$ref": "quantitiy.json#"
+    },
+    "high": {
+      "$ref": "quantitiy.json#"
+    }
+  }
+}
