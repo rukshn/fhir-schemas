@@ -1,0 +1,30 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema",
+  "$id": "stack://over.flow/quantity.json",
+  "$comment": "A measured amount (or an amount that can potentially be measured).",
+  "title": "Quantitiy",
+  "type": "object",
+  "properties": {
+    "value": {
+      "type": "number",
+      "$comment": "Numerical value (with implicit precision)"
+    },
+    "comparator": {
+      "type": "string",
+      "enum": ["<", "<=", ">=", ">"],
+      "$comment": "< | <= | >= | > - how to understand the value"
+    },
+    "unit": {
+      "type": "string",
+      "$comment": "Unit representation"
+    },
+    "system": {
+      "type": "string",
+      "$comment": "System that defines coded unit form"
+    },
+    "code": {
+      "type": "string",
+      "$comment": "Coded form of the unit"
+    }
+  }
+}
