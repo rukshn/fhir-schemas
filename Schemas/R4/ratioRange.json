@@ -1,0 +1,18 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema",
+  "$id": "stack://over.flow/ratioRange.json",
+  "$comment": "A range of ratios of two Quantity values expressed as a low numerator, a high numerator, and a denominator.",
+  "title": "ratioRange",
+  "type": "object",
+  "properties": {
+    "lowNumerator": {
+      "$ref": "quantity.json#"
+    },
+    "highNumerator": {
+      "$ref": "quantity.json#"
+    },
+    "denominator": {
+      "$ref": "quantitiy.json#"
+    }
+  }
+}
