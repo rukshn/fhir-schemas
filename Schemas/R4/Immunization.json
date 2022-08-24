@@ -1,0 +1,255 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema",
+  "$id": "stack://over.flow/Immunization.json",
+  "$comment": "The Immunization resource is intended to cover the recording of current and historical administration of vaccines to patients across all healthcare disciplines in all care settings and all regions.",
+  "title": "Immunization",
+  "type": "object",
+  "properties": {
+    "resourceType": {
+      "type": "string",
+      "enum": ["Immunization"]
+    },
+    "identifier": {
+      "type": "array",
+      "items": {
+        "$ref": "identifier.json#"
+      },
+      "$comment": "Business identifier"
+    },
+    "status": {
+      "type": "string",
+      "enum": ["completed", "entered-in-error", "not-done"],
+      "$comment": "completed | entered-in-error | not-done"
+    },
+    "statusReason": {
+      "$ref": "codeableConcept.json#",
+      "$comment": "Reason not done"
+    },
+    "vaccineCode": {
+      "$ref": "codeableConcept.json#",
+      "$comment": "Vaccine product administered"
+    },
+    "pateint": {
+      "$ref": "reference.json#",
+      "$comment": "Who was immunized"
+    },
+    "encounter": {
+      "$ref": "reference.json#",
+      "$comment": "Encounter immunization was part of"
+    },
+    "occurenceDateTime": {
+      "$ref": "dateTime.json#",
+      "$comment": "Vaccine administration date"
+    },
+    "occurenceString": {
+      "type": "string",
+      "$comment": "Vaccine administration date"
+    },
+    "recorded": {
+      "$ref": "dateTime.json#",
+      "$comment": "When the immunization was first captured in the subject's record"
+    },
+    "primarySource": {
+      "type": "boolean",
+      "$comment": "Indicates context the data was recorded in"
+    },
+    "reportOrigin": {
+      "$ref": "codeableConcept.json#",
+      "$comment": "Indicates the source of a secondarily reported record"
+    },
+    "location": {
+      "$ref": "reference.json#",
+      "$comment": "Where immunization occurred"
+    },
+    "manufacturer": {
+      "$ref": "reference.json#",
+      "$comment": "Vaccine manufacturer"
+    },
+    "lotNumber": {
+      "type": "string",
+      "$comment": "Vaccine lot number"
+    },
+    "expirationDate": {
+      "$ref": "date.json#",
+      "$comment": "Vaccine expiration date"
+    },
+    "site": {
+      "$ref": "codeableConcept.json#",
+      "$comment": "Body site vaccine was administered"
+    },
+    "route": {
+      "$ref": "codeableConcept.json#",
+      "$comment": "How vaccine entered body"
+    },
+    "doseQuantity": {
+      "$ref": "quantitity.json#",
+      "$comment": "Amount of vaccine administered"
+    },
+    "performer": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "fucntion": {
+            "$ref": "codeableConcept.json#",
+            "$comment": "What type of performance was done"
+          },
+          "actor": {
+            "$ref": "reference.json#",
+            "$comment": "Individual or organization who was performing"
+          }
+        },
+        "required": ["actor"]
+      },
+      "$comment": "Who performed event"
+    },
+    "note": {
+      "type": "array",
+      "items": {
+        "$ref": "Annotation.json#",
+        "$comment": "Additional immunization notes"
+      }
+    },
+    "reasonCode": {
+      "type": "array",
+      "items": {
+        "$ref": "codeableConcept.json#",
+        "$comment": "Why immunization occurred"
+      }
+    },
+    "reasonReference": {
+      "type": "array",
+      "items": {
+        "$ref": "reference.json#",
+        "$comment": "Why immunization occurred"
+      }
+    },
+    "isSubpotent": {
+      "type": "boolean",
+      "$comment": "Dose potency"
+    },
+    "subpotentReason": {
+      "type": "array",
+      "items": {
+        "$ref": "codeableConcept.json#",
+        "$comment": "Reason for being subpotent"
+      }
+    },
+    "education": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "documentType": {
+            "type": "string",
+            "$comment": "Educational material document identifier"
+          },
+          "reference": {
+            "type": "string",
+            "$comment": "Educational material reference pointer"
+          },
+          "publicationDate": {
+            "$ref": "dateTime.json#",
+            "$comment": "Educational material publication date"
+          },
+          "presentationDate": {
+            "$ref": "dateTime.json#",
+            "$comment": "Educational material presentation date"
+          }
+        }
+      },
+      "$comment": "Educational material presented to patient"
+    },
+    "programEligibility": {
+      "type": "array",
+      "items": {
+        "$ref": "codeableConcept.json#"
+      },
+      "$comment": "Patient eligibility for a vaccination program"
+    },
+    "fundingSource": {
+      "$ref": "codeableConcept.json#",
+      "$comment": "Funding source for the vaccine"
+    },
+    "reaction": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "date": {
+            "$ref": "dateTime.json#",
+            "$comment": "When reaction started"
+          },
+          "detail": {
+            "$ref": "reference.json#",
+            "$comment": "Additional information on reaction"
+          },
+          "reported": {
+            "type": "boolean",
+            "$comment": "Indicates self-reported reaction"
+          }
+        }
+      },
+      "$comment": "Details of a reaction that follows immunization"
+    },
+    "protocolApplied": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "series": {
+            "type": "string",
+            "$comment": "Name of vaccine series"
+          },
+          "authority": {
+            "$ref": "reference.json#",
+            "$comment": "Who is responsible for publishing the recommendations"
+          },
+          "targetDisease": {
+            "type": "array",
+            "items": {
+              "$ref": "codeableConcept.json#"
+            },
+            "$comment": "Vaccine preventatable disease being targetted"
+          },
+          "doseNumberPositiveInt": {
+            "type": "number",
+            "minimum": 0,
+            "$comment": "Dose number within series"
+          },
+          "doseNumberString": {
+            "type": "string",
+            "$comment": "Dose number within series"
+          },
+          "seriesDosesPositiveInt": {
+            "type": "number",
+            "minimum": 0,
+            "$comment": "Recommended number of doses for immunity"
+          },
+          "seriesDosesString": {
+            "type": "string",
+            "$comment": "Recommended number of doses for immunity"
+          }
+        },
+        "oneOf": [
+          {
+            "required": ["doseNumberPositiveInt"]
+          },
+          {
+            "required": ["doseNumberString"]
+          }
+        ]
+      },
+      "$comment": "Protocol followed by the provider"
+    }
+  },
+  "required": ["status", "vaccineCode", "patient"],
+  "oneOf": [
+    {
+      "required": ["occurenceDateTime"]
+    },
+    {
+      "required": ["occurenceString"]
+    }
+  ]
+}

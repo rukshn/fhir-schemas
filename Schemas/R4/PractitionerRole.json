@@ -1,0 +1,122 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema",
+  "$id": "stack://over.flow/PractitionerRole.json",
+  "$comment": "A specific set of Roles/Locations/specialties/services that a practitioner may perform at an organization for a period of time.",
+  "title": "PractitionerRole",
+  "type": "object",
+  "properties": {
+    "identifier": {
+      "type": "array",
+      "items": {
+        "$ref": "identifier.json#"
+      },
+      "$comment": "Business Identifiers that are specific to a role/location"
+    },
+    "active": {
+      "type": "boolean",
+      "$comment": "Whether this practitioner role record is in active use"
+    },
+    "period": {
+      "$ref": "period.json#",
+      "$comment": "The period during which the practitioner is authorized to perform in these role(s)"
+    },
+    "practitioner": {
+      "$ref": "Practitioner.json#",
+      "$comment": "Practitioner that is able to provide the defined services for the organization"
+    },
+    "organization": {
+      "$ref": "Organization.json#",
+      "$comment": "Organization where the roles are available"
+    },
+    "code": {
+      "type": "array",
+      "items": {
+        "$ref": "codeableConcept.json#"
+      },
+      "$comment": "Roles which this practitioner may perform"
+    },
+    "speciality": {
+      "type": "array",
+      "items": {
+        "$ref": "codeableConcept.json#"
+      },
+      "$comment": "Specific specialty of the practitioner"
+    },
+    "location": {
+      "type": "array",
+      "items": {
+        "$ref": "Location.json#"
+      },
+      "$comment": "The location(s) at which this practitioner provides care"
+    },
+    "healthcareService": {
+      "type": "array",
+      "items": {
+        "$ref": "HealthcareService.json#"
+      },
+      "$comment": "The list of healthcare services that this worker provides for this role's Organization/Location(s)"
+    },
+    "telecom": {
+      "type": "array",
+      "items": {
+        "$ref": "contactPoint.json#"
+      },
+      "$comment": "Contact details that are specific to the role/location/service"
+    },
+    "availableTimes": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "daysOfWork": {
+            "type": "string",
+            "enum": ["mon", "tue", "wed", "thu", "fri", "sat", "sun"],
+            "$comment": "Times the Service Site is available"
+          },
+          "allDay": {
+            "type": "boolean",
+            "$comment": "Always available? e.g. 24 hour service"
+          },
+          "availableStartTime": {
+            "$ref": "time.json#",
+            "$comment": "Opening time of day (ignored if allDay = true)"
+          },
+          "availableEndTime": {
+            "$ref": "time.json#",
+            "$comment": "Closing time of day (ignored if allDay = true)"
+          }
+        }
+      },
+      "$comment": "Times the Service Site is available"
+    },
+    "notAvailable": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "description": {
+            "type": "string",
+            "$comment": "Reason presented to the user explaining why time not available"
+          },
+          "during": {
+            "$ref": "period.json#",
+            "$comment": "Service not available from this date"
+          }
+        },
+        "required": ["description"]
+      },
+      "$comment": "Not available during this time due to provided reason"
+    },
+    "availabilityExceptions": {
+      "type": "string",
+      "$comment": "Description of availability exceptions"
+    },
+    "endpoint": {
+      "type": "array",
+      "items": {
+        "$ref": "endpoint.json#"
+      },
+      "$comment": "Technical endpoints providing access to services operated for the practitioner with this role"
+    }
+  }
+}

@@ -1,0 +1,78 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema",
+  "$id": "stack://over.flow/Endpoint.json",
+  "$comment": "The technical details of an endpoint that can be used for electronic services, such as for web services providing XDS.b or a REST endpoint for another FHIR server. This may include any security context information.",
+  "title": "Endpoint",
+  "type": "object",
+  "properties": {
+    "identifier": {
+      "type": "array",
+      "items": {
+        "$ref": "identifier.json#"
+      },
+      "$comment": "Identifies this endpoint across multiple systems"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "active",
+        "suspended",
+        "error",
+        "off",
+        "entered-in-error",
+        "test"
+      ],
+      "$comment": "active | suspended | error | off | entered-in-error | test"
+    },
+    "connectionType": {
+      "$ref": "coding.json#",
+      "$comment": "Protocol/Profile/Standard to be used with this endpoint connection"
+    },
+    "name": {
+      "type": "string",
+      "$comment": "A name that this endpoint can be identified by"
+    },
+    "managingOrganization": {
+      "$ref": "Organization.json#",
+      "$comment": "Organization that manages this endpoint (might not be the organization that exposes the endpoint)"
+    },
+    "contact": {
+      "type": "array",
+      "items": {
+        "$ref": "contactPoint.json#"
+      },
+      "$comment": "Contact details for source (e.g. troubleshooting)"
+    },
+    "period": {
+      "$ref": "period.json#",
+      "$comment": "Interval the endpoint is expected to be operational"
+    },
+    "payloadType": {
+      "type": "array",
+      "items": {
+        "$ref": "codeableConcept.json#"
+      },
+      "minItems": 1,
+      "$comment": "The type of content that may be used at this endpoint (e.g. XDS Discharge summaries)"
+    },
+    "payloadMimeType": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "$comment": "Mimetype to send. If not specified, the content could be anything (including no payload, if the connectionType defined this)"
+    },
+    "address": {
+      "type": "string",
+      "$comment": "The technical base address for connecting to this endpoint"
+    },
+    "header": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "$comment": "Usage depends on the channel type"
+    }
+  },
+  "required": ["status", "connectionType", "payloadType", "address"]
+}
