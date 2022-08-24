@@ -1,0 +1,145 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema",
+  "$id": "stack://over.flow/AllergyIntollerence.json",
+  "$comment": "Risk of harmful or undesirable, physiological response which is unique to an individual and associated with exposure to a substance.",
+  "title": "AllergyIntollerence",
+  "type": "object",
+  "properties": {
+    "resourceType": {
+      "type": "string",
+      "enum": ["AllergyIntollerence"]
+    },
+    "identifier": {
+      "type": "array",
+      "items": {
+        "$ref": "identifier.json#"
+      },
+      "$comment": "External ids for this item"
+    },
+    "clinicalStatus": {
+      "$ref": "codeableConcept.json#",
+      "$comment": "active | inactive | resolved"
+    },
+    "verificationStatus": {
+      "$ref": "codeableConcept.json#",
+      "$comment": "unconfirmed | confirmed | refuted | entered-in-error"
+    },
+    "type": {
+      "type": "string",
+      "$comment": "allergy | intolerance - Underlying mechanism (if known)"
+    },
+    "category": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "enum": ["food", "medication", "environment", "biologic"]
+      },
+      "$comment": "food | medication | environment | biologic"
+    },
+    "criticality": {
+      "type": "string",
+      "enum": ["low", "high", "unable-to-assess"],
+      "$comment": "low | high | unable-to-assess"
+    },
+    "code": {
+      "$ref": "codeableConcept.json#",
+      "$comment": "Code that identifies the allergy or intolerance"
+    },
+    "patient": {
+      "$ref": "reference.json#",
+      "$comment": "Who the sensitivity is for"
+    },
+    "encounter": {
+      "$ref": "reference.json#",
+      "$comment": "Encounter when the allergy or intolerance was asserted"
+    },
+    "onsetDateTime": {
+      "$ref": "dateTime.json#",
+      "$comment": "When allergy or intolerance was identified"
+    },
+    "onsetAge": {
+      "$ref": "age.json#",
+      "$comment": "When allergy or intolerance was identified"
+    },
+    "onsetPeriod": {
+      "$ref": "perion.json#",
+      "$comment": "When allergy or intolerance was identified"
+    },
+    "onsetRange": {
+      "$ref": "range.json#",
+      "$comment": "When allergy or intolerance was identified"
+    },
+    "onsetString": {
+      "type": "string",
+      "$comment": "When allergy or intolerance was identified"
+    },
+    "recordedDate": {
+      "$ref": "dateTime.json#",
+      "$comment": "Date first version of the resource instance was recorded"
+    },
+    "recorder": {
+      "$ref": "reference.json#",
+      "$comment": "Who recorded the sensitivity"
+    },
+    "asseter": {
+      "$ref": "reference.json#",
+      "$comment": "Source of the information about the allergy"
+    },
+    "lastOccurence": {
+      "$ref": "dateTime.json#",
+      "$comment": "Date(/time) of last known occurrence of a reaction"
+    },
+    "note": {
+      "type": "array",
+      "items": {
+        "$ref": "annotation.json#"
+      },
+      "$comment": "Additional text not captured in other fields"
+    },
+    "reaction": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "substance": {
+            "$ref": "codeableConcept.json#",
+            "$comment": "Specific substance or pharmaceutical product considered to be responsible for event"
+          },
+          "manifestation": {
+            "type": "array",
+            "items": {
+              "$comment": "Clinical symptoms/signs associated with the Event"
+            },
+            "minItems": 1,
+            "$ref": "codeableConcept.json#"
+          },
+          "description": {
+            "type": "string",
+            "$comment": "Description of the event as a whole"
+          },
+          "onset": {
+            "$ref": "dateTime.json#",
+            "$comment": "Date(/time) when manifestations showed"
+          },
+          "severity": {
+            "type": "string",
+            "$comment": "mild | moderate | severe (of event as a whole)"
+          },
+          "exposureRoute": {
+            "$ref": "codeableConcept.json#",
+            "$comment": "How the subject was exposed to the substance"
+          },
+          "note": {
+            "type": "array",
+            "items": {
+              "$ref": "annotation.json#"
+            },
+            "$comment": "Text about event not captured in other fields"
+          }
+        }
+      },
+      "$comment": "Adverse Reaction Events linked to exposure to substance"
+    }
+  },
+  "required": ["patient"]
+}
