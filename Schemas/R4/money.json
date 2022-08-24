@@ -1,0 +1,17 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema",
+  "$id": "stack://over.flow/money.json",
+  "$comment": "An amount of currency.",
+  "title": "money",
+  "type": "object",
+  "properties": {
+    "value": {
+      "type": "number",
+      "$comment": "Numerical value (with implicit precision)"
+    },
+    "currency": {
+      "type": "string",
+      "$comment": "ISO 4217 Currency Code"
+    }
+  }
+}
