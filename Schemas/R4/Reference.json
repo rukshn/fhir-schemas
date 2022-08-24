@@ -1,0 +1,25 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema",
+  "$id": "stack://over.flow/Reference.json",
+  "$comment": "Many of the defined elements in a resource are references to other resources. Using these references, the resources combine to build a web of information about healthcare.",
+  "title": "Reference",
+  "type": "object",
+  "properties": {
+    "reference": {
+      "type": "string",
+      "$comment": "Literal reference, Relative, internal or absolute URL"
+    },
+    "type": {
+      "type": "string",
+      "$comment": "Type the reference refers to (e.g. 'Patient')"
+    },
+    "identifier": {
+      "$ref": "identifier.json#",
+      "$comment": "Logical reference, when literal reference is not known"
+    },
+    "display": {
+      "type": "string",
+      "$comment": "Text alternative for the resource"
+    }
+  }
+}
