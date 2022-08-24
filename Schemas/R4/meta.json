@@ -1,0 +1,35 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema",
+  "$id": "stack://over.flow/meta.json",
+  "$comment": "Each resource contains an element 'meta', of type 'Meta', which is a set of metadata that provides technical and workflow context to the resource.",
+  "title": "meta",
+  "type": "object",
+  "properties": {
+    "versionId": {
+      "type": "string",
+      "maxLength": 64,
+      "$comment": "Version specific identifier"
+    },
+    "lastUpdated": {
+      "$ref": "instant.json#",
+      "$comment": "When the resource version last changed"
+    },
+    "source": {
+      "type": "string",
+      "$comment": "Identifies where the resource comes from"
+    },
+    "security": {
+      "type": "array",
+      "items": {
+        "$ref": "coding.json#"
+      },
+      "$comment": "Security Labels applied to this resource"
+    },
+    "tag": {
+      "type": "array",
+      "items": {
+        "$ref": "coding.json#"
+      }
+    }
+  }
+}
