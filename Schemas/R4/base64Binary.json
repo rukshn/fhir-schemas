@@ -1,0 +1,8 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema",
+  "$id": "stack://over.flow/base64Binary",
+  "$comment": "base64Binary primitive element",
+  "title": "Base 64 binary",
+  "type": "string",
+  "pattern": "(\\s*([0-9a-zA-Z\\+\\=]){4}\\s*)+"
+}
